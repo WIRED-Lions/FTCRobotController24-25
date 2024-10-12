@@ -22,7 +22,7 @@ public class testRun extends LinearOpMode {
             backRight.setPower(1.0);
             frontLeft.setPower(1.0);
             frontRight.setPower(1.0);
-            sleep(10000);
+            sleep(5000);
         }
     }
 }
