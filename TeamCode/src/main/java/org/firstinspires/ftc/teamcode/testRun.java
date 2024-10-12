@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+//import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@TeleOp (name = "testRun", group = "Default")
+@Autonomous (name = "testRun", group = "Default")
+//@TeleOp (name = "testRun", group = "Default")
 public class testRun extends LinearOpMode {
     @Override
     public void runOpMode(){
