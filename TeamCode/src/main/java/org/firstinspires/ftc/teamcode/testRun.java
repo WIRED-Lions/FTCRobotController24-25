@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-//import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous (name = "testRun", group = "Default")
@@ -11,10 +11,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class testRun extends LinearOpMode {
     @Override
     public void runOpMode(){
+        //DcMotorEx frontRight = hardwareMap.get(DcMotorEx.class, "linearSlide");
         DcMotorEx frontRight = hardwareMap.get(DcMotorEx.class, "Motor0");
         DcMotorEx backRight = hardwareMap.get(DcMotorEx.class, "Motor1");
         DcMotorEx backLeft = hardwareMap.get(DcMotorEx.class, "Motor2");
         DcMotorEx frontLeft = hardwareMap.get(DcMotorEx.class, "Motor3");
+        DcMotorEx arm = hardwareMap.get(DcMotorEx.class, "Motor4");
 
         frontLeft.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER); //do for all motors
         frontLeft.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER); //do same for all motors
@@ -45,14 +47,9 @@ public class testRun extends LinearOpMode {
                 telemetry.addData("Encoder Position M3", frontLeftPosition); //do same for all motors
                 telemetry.update();
 
-                //Motor 0
-                frontRight.setPower(.99);
-                //Motor 1
-                backRight.setPower(-.99);
-                //Motor 2
-                backLeft.setPower(1);
-                //Motor 3
-                frontLeft.setPower(-1);
+                //Motor 4
+                arm.setPower(.99);
+
 
 
 
