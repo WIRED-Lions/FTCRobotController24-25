@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.qualcomm.ftcrobotcontroller.test.FtcRobotController-mergeDebugAndroidTestResources-14:/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "C:\\Robotics\\gradle-8.11-milestone-1\\caches\\transforms-3\\99d41f3e8556fca9bd72f9db8999c345\\transformed\\appcompat-1.2.0\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                }
+            ]
+        }
+    ]
+}
