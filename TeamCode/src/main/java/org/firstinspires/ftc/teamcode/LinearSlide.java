@@ -21,8 +21,6 @@ public class LinearSlide extends LinearOpMode {
         linearSlide.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER); //do for all motors
         linearSlide.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER); //do same for all motors
 
-
-
         telemetry.addData("Mode", "waiting");
         telemetry.update();
         while(true){
