@@ -40,9 +40,6 @@ public class Dec12Controller extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            //telemetry.addData("Status", "Running");
-            //telemtery.addData("gamepad1.right_stick_y: ", gamepad1.right_stick_y);
-            // telemetry needed?
 
             frontLeft.setMotorEnable();
             backLeft.setMotorEnable();
@@ -80,11 +77,23 @@ public class Dec12Controller extends LinearOpMode {
         double sin = Math.sin(theta - Math.PI/4);
         double cos = Math.cos(theta - Math.PI/4);
         double max = Math.max(Math.abs(sin), Math.abs(cos));
+        double speed = 0.0;
 
-        double leftFrontPower = power * cos/max + turn;
-        double rightFrontPower = power * sin/max - turn;
-        double leftBackPower = power * cos/max - turn;
-        double rightBackPower = power * sin/max + turn;
+        if ((gamepad1.right_trigger > 0.7) && (gamepad1.left_trigger > 0.7)) { //normal
+            speed = 1;
+        } else if (gamepad1.right_trigger > 0.7) { //fast
+            speed = 2;
+        } else if (gamepad1.left_trigger > 0.7) { //slow
+            speed = 0.5;
+        } else { //normal
+            speed = 1;
+        }
+
+
+        double leftFrontPower = (power * cos/max + turn) * speed;
+        double rightFrontPower = (power * sin/max - turn) * speed;
+        double leftBackPower = (power * cos/max - turn) * speed;
+        double rightBackPower = (power * sin/max + turn) * speed;
 
 
 
