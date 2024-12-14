@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp
 
-public class Dec12Controller extends LinearOpMode {
+public class Dec142Controller extends LinearOpMode {
 
     //Variables
     private DcMotorEx frontLeft;
@@ -35,13 +35,16 @@ public class Dec12Controller extends LinearOpMode {
         frontRight.setDirection(DcMotorEx.Direction.FORWARD);
         backLeft.setDirection(DcMotorEx.Direction.FORWARD);
         backRight.setDirection(DcMotorEx.Direction.REVERSE);
+        arm.setDirection(DcMotorEx.Direction.REVERSE);
+        arm.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
         arm.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         arm.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        arm.setVelocity(1000);
 
-        int armStartPosition = arm.getCurrentPosition();
         telemetry.addData("Slide encoders reset and starting at: ", arm.getCurrentPosition());
-        int targetPosition = armStartPosition;
+        arm.setTargetPosition(targetPosition);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -66,7 +69,7 @@ public class Dec12Controller extends LinearOpMode {
             int armPosition = arm.getCurrentPosition();
 
             drive(theta, power, turn, percent);
-            arm();
+            movearm(armPosition, targetPosition);
 
             telemetry.addData("x", x);
             telemetry.addData("y", y);
@@ -79,18 +82,22 @@ public class Dec12Controller extends LinearOpMode {
             telemetry.addData("Left Back Power", backLeft.getPower());
             telemetry.addData("Right Back Power", backRight.getPower());
             telemetry.addData("Encoder Position Arm", armPosition);
+            telemetry.addData("Arm Target Position", targetPosition);
             telemetry.update();
 
         }
     }
 
-    public void arm() {
-        if (gamepad1.a){
-            arm.setPower(-1);
+    public void movearm(int armPosition, int targetPosition) {
+
+        arm.setVelocity(4000);
+
+        if (gamepad1.y){
+            arm.setTargetPosition(3100); // know how much an encoder count is worth in inches or centimeters to tell judges
+        } else if (gamepad1.a) {
+            arm.setTargetPosition(0);
         } else if (gamepad1.b) {
-            arm.setPower(1);
-        } else {
-            arm.setPower(0);
+            arm.setTargetPosition(1750);
         }
     }
 
