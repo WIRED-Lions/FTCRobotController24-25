@@ -100,9 +100,9 @@ public class FINALController extends LinearOpMode {
             int armPosition = arm.getCurrentPosition();
 
             drive(theta, power, turn, percent);
-            movearm(armPosition, targetPosition);
+            movearm();
             conveyorBelt();
-            basketScore(initialPosition);
+            basketScore();
             conveyorMover();
             armRotate();
             intakeSpin();
@@ -174,7 +174,7 @@ public class FINALController extends LinearOpMode {
     }
 
 
-    public void basketScore(double initialPosition){
+    public void basketScore(){
         if (gamepad2.left_bumper){
             dumpBucket.setPosition(1);
             //dumpBucket.setPosition(0.5);
@@ -199,7 +199,7 @@ public class FINALController extends LinearOpMode {
     }
 
 
-    public void movearm(int armPosition, int targetPosition) {
+    public void movearm() {
 
         arm.setVelocity(4000);
 
